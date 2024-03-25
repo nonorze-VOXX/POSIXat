@@ -7,7 +7,7 @@
 
 void collatz(int n) {
   printf("%d", n);
-  while (n != 1) {
+  while (n != 1 && n > 0) {
     if (n % 2 == 0) {
       n = n / 2;
     } else {

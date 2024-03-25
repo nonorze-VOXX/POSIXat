@@ -29,16 +29,12 @@ int main(int argc, char *argv[]) {
     close(fd[0]);
     struct timeval tv;
     gettimeofday(&tv, NULL);
-    printf("Time of day: %ld\n", tv.tv_usec);
     write(fd[1], &tv, sizeof(tv));
     close(fd[1]);
 
     // run cal
 
     // print argv[0]
-    printf("argv[0]: %s\n", argv[0]);
-    printf("argv[1]: %s\n", argv[1]);
-    printf("argv[2]: %s\n", argv[2]);
     execvp(argv[1], argv + 1);
     return 0;
 
@@ -54,7 +50,7 @@ int main(int argc, char *argv[]) {
     // WEXITSTATUS(exit_status));
     struct timeval tv;
     gettimeofday(&tv, NULL);
-    printf("return: %ld\n", tv.tv_usec - child_tv.tv_usec);
+    printf("elapsed time: %ld\n", tv.tv_usec - child_tv.tv_usec);
   }
   return 0;
 }

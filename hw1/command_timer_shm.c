@@ -35,7 +35,6 @@ int main(int argc, char *argv[]) {
     // get time of day
     struct timeval tv;
     gettimeofday(&tv, NULL);
-    printf("Time of day: %ld\n", tv.tv_usec);
 
     *shared_variable = tv;
     // run cal
@@ -44,8 +43,6 @@ int main(int argc, char *argv[]) {
 
   } else {
     wait(&exit_status);
-    printf("Child process exited with status %d\n", WEXITSTATUS(exit_status));
-    printf("Shared variable: %ld\n", shared_variable->tv_usec);
     struct timeval tv;
     gettimeofday(&tv, NULL);
     printf("return: %ld\n", tv.tv_usec - shared_variable->tv_usec);

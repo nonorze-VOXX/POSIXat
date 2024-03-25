@@ -28,7 +28,6 @@ void copy_file(char *input_file, char *output_file) {
     int n;
     while ((n = read(read_fd, buf, sizeof(buf))) > 0) {
       int result = write(fd[1], buf, n);
-      printf("result: %d\n", result);
       if (result != n) {
         perror("write");
         exit(1);
