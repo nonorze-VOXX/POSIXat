@@ -41,8 +41,8 @@ shared: (b) heap memory, (c) global memory
     taskgroup({
       task($P_1$, (0, 3), style: (stroke: 2pt + black))
       task($P_2$, (3, 4),(16,19), style: (stroke: 2pt + black))
-      task($P_3$, (4, 6),(8,9),(10,11), style: (stroke: 2pt + black))
-      task($P_4$, (6, 8),(14,16), style: (stroke: 2pt + black))
+      task($P_3$, (4, 6),(8,9),(14,15), style: (stroke: 2pt + black))
+      task($P_4$, (6, 8),(10,11),(15,16), style: (stroke: 2pt + black))
       task($P_5$, (9, 10), style: (stroke: 2pt + black))
       task($P_6$, (11, 14), style: (stroke: 2pt + black))
     })
@@ -60,14 +60,41 @@ shared: (b) heap memory, (c) global memory
 + turenaround time:
   - $P_1$: 15
   - $P_2$: 95
-  - $P_3$: 35
+  - $P_3$: 55
   - $P_4$: 55
   - $P_5$: 5
   - $P_6$: 15
 + waiting time:
   - $P_1$: 0
   - $P_2$: 75
-  - $P_3$: 15
-  - $P_4$: 30
+  - $P_3$: 35
+  - $P_4$: 35
   - $P_5$: 0
   - $P_6$: 0
+
+== 5.22
++ the time quantum is 1 milisecond:\
+   the CPU utilization is $(1+10)/((1+0.1) + (1+0.1)*10) = 90.90%$ 
++ the time quantum is 10 milisecond:\
+   the CPU utilization is $(10+10)/((10 + 0.1) + (1+0.1)*10) = 94.78%$
+
+== 5.25
++ FCFS\
+  short process will be blocked by long process
++ RR \
+  all process have same fixed time to run,
+  then short process want run need to wait front process is queue
++ Multilevel feedback queues\
+  all process process in first level queue,
+  if the process is too long to run, it will be moved to next level queue.
+  so short process can run in first level queue
+
+  
+== 6.7
+- (a) when the stask length is 1, and two thread run pop in same time, will happen race condition, and segfault
+- (b) let the stack function is atomic, so the race condition will be fixed
+
+== 6.15
+todo
+== 6.18
+todo
