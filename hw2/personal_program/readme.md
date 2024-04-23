@@ -2,7 +2,7 @@
 
 110590002 王熯竑
 
-## Fibonacci sequence
+## 4.27 Fibonacci sequence
 
 ### run
 
@@ -14,7 +14,7 @@ gcc fib.c ; ./a.out {number}
 > screenshot:
 ![fib](screenshot/fib.png)
 
-## Monte Carlo
+## 4.24 Monte Carlo
 
 
 ### run
@@ -25,3 +25,11 @@ gcc MonteCarlo.c ; ./a.out
 > screenshot:
 ![monte](screenshot/monte.png)
 
+## 6.33
+ Assume that a finite number of resources of a single
+resource type must be managed
+
+### run 
+```bash
+gcc license.c ; ./a.out
+```
