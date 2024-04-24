@@ -95,6 +95,10 @@ shared: (b) heap memory, (c) global memory
 - (b) let the stack function is atomic, so the race condition will be fixed
 
 == 6.15
-todo
+1. loss of responsiveness: disabling interrupts will let single-processor system can't response to other task. In user level will look like freeze, it is not good for user experience.
+2. system stablility: if the interrupt is disabled, the system can't response to hardware interrupt, so the system will be unstable.
+
 == 6.18
-todo
+the aquire a lock request will be enqueue to a waiting queue.
+when acquired the lock, the thread will be blocked by waiting queue,
+when unlock the lock, make next request have request.
