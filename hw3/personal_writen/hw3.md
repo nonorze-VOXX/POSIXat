@@ -84,8 +84,6 @@ function  south_farmer(){
     - paging: size is fixed, eazy to share
 
 ## 9.24
-- (a) $2^15$ entries TODO~!
-    2^17=131072 > 1GB/8KB = 125000
-    32bit-17bit = 15bit
-- (b) TODO
+- (a) $2^32 / 2^13 = 2^19$
+- (b) $2^30 / 2^13 = 2^17$
    
