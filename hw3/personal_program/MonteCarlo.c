@@ -26,7 +26,7 @@ void *monte_carlo(void *param) {
 }
 
 int main(int argc, char *argv[]) {
-  total_points = 1e8; // 100000000
+  total_points = 1e7; // 10000000
   pthread_mutex_init(&mutex, NULL);
   pthread_t threads[NUM_THREADS];
   pthread_attr_t attr;

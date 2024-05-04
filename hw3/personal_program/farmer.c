@@ -21,6 +21,10 @@ void *north_farmer(void *arg) {
   sem_post(&using);
   // passing
   printf("North farmer is passing\n");
+  int sleep_time = rand() % 5;
+  sleep(sleep_time);
+  printf("North farmer passed\n");
+
   sem_wait(&using);
   north_count--;
   sem_post(&using);
@@ -42,6 +46,7 @@ void *south_farmer(void *arg) {
   // sleep for a random period of time
   int sleep_time = rand() % 5;
   sleep(sleep_time);
+  printf("South farmer passed\n");
 
   sem_wait(&using);
   south_count--;
@@ -50,13 +55,21 @@ void *south_farmer(void *arg) {
 
 int main() {
   sem_init(&using, 0, 1);
-  pthread_t north_farmer_thread, south_farmer_thread;
-  for (int i = 0; i < 100; i++) {
+  int number_of_farmer = 10;
+  pthread_t north_farmer_threads[number_of_farmer],
+      south_farmer_threads[number_of_farmer];
+  for (int i = 0; i < number_of_farmer; i++) {
+    pthread_t north_farmer_thread, south_farmer_thread;
     pthread_create(&north_farmer_thread, NULL, north_farmer, NULL);
     pthread_create(&south_farmer_thread, NULL, south_farmer, NULL);
+    north_farmer_threads[i] = north_farmer_thread;
+    south_farmer_threads[i] = south_farmer_thread;
   }
-  pthread_join(north_farmer_thread, NULL);
-  pthread_join(south_farmer_thread, NULL);
+
+  for (int i = 0; i < number_of_farmer; i++) {
+    pthread_join(north_farmer_threads[i], NULL);
+    pthread_join(south_farmer_threads[i], NULL);
+  }
   sem_destroy(&using);
   return 0;
 }
